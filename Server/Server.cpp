@@ -67,7 +67,7 @@ void Server::Draw() {
 
 void Server::Write(int x, int y) {
     //std::cout << x << "\t" << y << std::endl;
-
+    std::lock_guard<std::mutex> lock(listAccess);
     if (!mouseCoordinates.empty() && mouseCoordinates.size() == pointsCount)
         mouseCoordinates.pop_front();
 
